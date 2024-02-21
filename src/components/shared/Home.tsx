@@ -34,7 +34,7 @@ const Home: React.FC = () => {
   }, [url]);
   return (
    
-    <div className="h-screen   w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden">
+    <div className="h-screen px-3   w-full rounded-md flex md:items-center md:justify-center bg-neutral-950 antialiased bg-grid-white/[0.02] relative overflow-hidden">
     <Spotlight
       className="-top-40 left-0 md:left-60 md:-top-20"
       fill="white"
@@ -47,7 +47,7 @@ const Home: React.FC = () => {
        
 In today's digital landscape, rife with cybersecurity threats, URL Scanner stands out as a crucial safeguard for your online security. This innovative website enhances your protection by analyzing and verifying URL safety, effectively defending against phishing, malware, and scams before you click.
       </p>
-      <form  className="flex mt-10 items-center mx-auto justify-center gap-3" onSubmit={handleSubmit}>
+      <form  className="flex flex-col md:flex-row mt-10 items-center mx-auto justify-center gap-3" onSubmit={handleSubmit}>
 
       
    <Input

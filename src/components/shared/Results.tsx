@@ -15,6 +15,8 @@ const Results: React.FC = () => {
   const [urlInfo, setUrlInfo] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
+  const API_KEY = import.meta.env.VITE_API_KEY
+
   useEffect(() => {
     const fetchUrlInfo = async () => {
       try {
@@ -23,7 +25,7 @@ const Results: React.FC = () => {
             method: 'GET',
             headers: {
               accept: 'application/json',
-              'x-apikey': 'b247c64abaf9ad0391764ae8aae14a483dc94338e743b3940b61f9fdc1fcf4c8'
+              'x-apikey': API_KEY
             }
           };
         const response = await fetch(apiUrl, options);
@@ -41,9 +43,7 @@ const Results: React.FC = () => {
 
     fetchUrlInfo();
 
-    return () => {
-      // Cleanup if needed
-    };
+   
   }, [urlId]);
   if (loading) {
     return <Loader />
@@ -60,7 +60,7 @@ const Results: React.FC = () => {
      
  <div className="absolute top-0 z-[-2] h-full w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
  
- <div className="  max-w-7xl   mx-auto relative  pt-20 ">
+ <div className="px-3  max-w-7xl   mx-auto relative  pt-20 ">
       <h1 className="text-4xl pb-3 md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">
       URL Information
       </h1>

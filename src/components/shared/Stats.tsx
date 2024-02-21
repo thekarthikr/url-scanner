@@ -12,10 +12,10 @@ interface StatsProps {
     return (
         <section className="py-24 z-50">
             <div className="max-w-6xl mx-auto px-5 sm:px-10 md:px-6 lg:px-4">
-                <div className="p-6 rounded-lg border border-gray-900 backdrop-blur-md bg-neutral-950/30 grid sm:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
+                <div className="p-6 rounded-lg border border-gray-900 backdrop-blur-md bg-neutral-950/30 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
                   {
-                    stats.map((stat)=>(
-                        <div className="space-y-2">
+                    stats.map((stat,idx)=>(
+                        <div className="space-y-2" key={idx}>
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-200 ">
                           {stat?.[1]}
                         </h2>

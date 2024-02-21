@@ -41,7 +41,7 @@ const Detection: React.FC<DetectionProps> = ({ data }) => {
     unrated: <MdOutlineQuestionMark />,
   };
   return (
-    <div className='max-w-5xl mx-auto'>
+    <div className='max-w-5xl px-3 mx-auto'>
     
       
 <Table color='danger' aria-label="Example static collection table"
