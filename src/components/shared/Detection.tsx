@@ -4,64 +4,7 @@ import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Paginat
 import { GrStatusGood } from "react-icons/gr";
 import { PiWarningCircleBold } from "react-icons/pi";
 import { MdOutlineQuestionMark } from "react-icons/md";
-
-interface AnalysisResult {
-    id: string;
-    type: string;
-    links: {
-      self: string;
-    };
-    attributes: {
-      last_http_response_content_length: number;
-      title: string;
-      last_analysis_stats: {
-        malicious: number;
-        suspicious: number;
-        undetected: number;
-        harmless: number;
-        timeout: number;
-      };
-      last_analysis_date: number;
-      last_modification_date: number;
-      last_analysis_results: {
-        [engine: string]: {
-          method: string;
-          engine_name: string;
-          category: string;
-          result: string;
-        };
-      };
-      redirection_chain: string[];
-      total_votes: {
-        harmless: number;
-        malicious: number;
-      };
-      times_submitted: number;
-      last_submission_date: number;
-      last_http_response_headers: {
-        [header: string]: string;
-      };
-      last_final_url: string;
-      last_http_response_content_sha256: string;
-      tld: string;
-      last_http_response_code: number;
-      first_submission_date: number;
-      tags: string[];
-      crowdsourced_context: {
-        source: string;
-        details: string;
-        severity: string;
-        timestamp: number;
-        title: string;
-      }[];
-      threat_names: string[];
-      categories: {
-        [engine: string]: string;
-      };
-      reputation: number;
-      url: string;
-    };
-  }
+import { AnalysisResult } from '../../utils/types';
   
 
 interface DetectionProps {
@@ -98,10 +41,10 @@ const Detection: React.FC<DetectionProps> = ({ data }) => {
     unrated: <MdOutlineQuestionMark />,
   };
   return (
-    <div>
+    <div className='max-w-5xl mx-auto'>
     
       
-<Table aria-label="Example static collection table"
+<Table color='danger' aria-label="Example static collection table"
 
 
 bottomContent={
@@ -110,16 +53,14 @@ bottomContent={
         isCompact
         showControls
         showShadow
-        color="secondary"
+        color="primary"
         page={page}
         total={pages}
         onChange={(page) => setPage(page)}
       />
     </div>
   }
-  classNames={{
-    wrapper: "min-h-[222px]",
-  }}>
+ >
       <TableHeader>
         <TableColumn> ENGINE NAME </TableColumn>
         <TableColumn> RESULT </TableColumn>
