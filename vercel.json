@@ -2,8 +2,8 @@
 {
     "rewrites": [
       {
-        "source": "/api/urls/:path*",
-        "destination": "https://www.virustotal.com/api/urls/:path*"
+        "source": "/api/v3/urls/:path*",
+        "destination": "https://www.virustotal.com/api/v3/urls/:path*"
       }
     ]
   }
