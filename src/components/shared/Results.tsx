@@ -20,7 +20,7 @@ const Results: React.FC = () => {
   useEffect(() => {
     const fetchUrlInfo = async () => {
       try {
-        const apiUrl = `https://www.virustotal.com/api/v3/urls/${urlId}`;
+        const apiUrl = `https://cors-anywhere.herokuapp.com/https://www.virustotal.com/api/v3/urls/${urlId}`;
         const options = {
             method: 'GET',
             
