@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-import {Tabs, Tab} from "@nextui-org/react";
+import {Tabs, Tab, Button} from "@nextui-org/react";
 import Detection from "./Detection";
 import Stats from './Stats';
 import Details from './Details';
@@ -23,6 +23,7 @@ const Results: React.FC = () => {
         const apiUrl = `https://www.virustotal.com/api/v3/urls/${urlId}`;
         const options = {
             method: 'GET',
+            
             headers: {
               accept: 'application/json',
               'x-apikey': API_KEY
@@ -50,7 +51,35 @@ const Results: React.FC = () => {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return  <div className=" text-gray-400 relative">
+     
+    <div className="absolute top-0 z-[-2] h-screen w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+    
+    <div className="px-3  max-w-4xl   mx-auto relative  pt-36 ">
+         <h1 className="text-4xl pb-3 md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-red-50 to-red-400 bg-opacity-50">
+        Something went wrong, Please try again later..
+         </h1>
+         <p className="mt-4 font-normal text-base text-neutral-300 max-w-3xl text-center mx-auto">
+         Please check the url and try again..
+     </p>
+          
+         <div className='text-center mt-8'>
+       <Link to='/'>
+       <Button  variant="faded" >
+            Back to Home
+          </Button>
+       </Link>
+
+         </div>
+        
+       
+    
+       </div>
+   
+    
+     
+       
+       </div>
   }
 
   const { attributes:{times_submitted,url,tld,title,first_submission_date,reputation,total_votes} } = urlInfo;

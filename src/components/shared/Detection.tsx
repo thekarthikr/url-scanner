@@ -44,16 +44,23 @@ const Detection: React.FC<DetectionProps> = ({ data }) => {
     <div className='max-w-5xl px-3 mx-auto'>
     
       
-<Table color='danger' aria-label="Example static collection table"
+<Table removeWrapper className='b z-50  text-gray-200' aria-label="Example static collection table"
 
 
 bottomContent={
-    <div className="flex w-full justify-center">
+    <div className="flex w-full  justify-center ">
       <Pagination
-        isCompact
+          classNames={{
+            wrapper: "bg-neutral-900   text-gray-200",
+            item: "bg-transparent   text-gray-200",
+            next:'bg-neutral-900 text-gray-200',
+            prev:'bg-neutral-900 text-gray-200',
+          
+           
+          }}
+        variant='flat'
         showControls
-        showShadow
-        color="primary"
+        color="success"
         page={page}
         total={pages}
         onChange={(page) => setPage(page)}
@@ -61,14 +68,14 @@ bottomContent={
     </div>
   }
  >
-      <TableHeader>
-        <TableColumn> ENGINE NAME </TableColumn>
-        <TableColumn> RESULT </TableColumn>
+      <TableHeader  >
+        <TableColumn className='bg-neutral-900 text-gray-100 font-bold'> ENGINE NAME </TableColumn>
+        <TableColumn className='bg-neutral-900 text-gray-100 font-bold'>   RESULT </TableColumn>
     
       </TableHeader>
-      <TableBody>
+      <TableBody className='bg-red-400' >
       {items.map(([engineName, result]) => (
-           <TableRow key={engineName}>
+           <TableRow className=' backdrop-blur-sm  bg-neutral-900/40 rounded-md border border-neutral-800/50' key={engineName}>
            <TableCell> {result.engine_name} </TableCell>
            <TableCell>    <Chip    color={statusColorMap[result.result]} size="sm" variant="flat">
               <div className='flex items-center gap-1'>
