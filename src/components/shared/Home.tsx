@@ -6,30 +6,35 @@ import { Button, Input } from '@nextui-org/react';
 
 const Home: React.FC = () => {
   const [url, setUrl] = useState('');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const history = useNavigate();
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    if (validateURL(url)) {
-      const url_id = base64.encode(url).replace(/=/g, '');
-      history(`/results/${url_id}`);
-    } else {
-      // URL is invalid, you can handle this case (e.g., show an error message)
-      console.error('Invalid URL');
+    if (url.trim() === "") {
+      setErrorMessage("Please enter a URL");
+      return;
     }
+    if (!validateURL(url)) {
+      setErrorMessage("Please enter a valid URL");
+      return;
+    }
+    const url_id = base64.encode(url).replace(/=/g, '');
+    history(`/results/${url_id}`);
   };
 
   const validateURL = (url: string) => {
-    // Regular expression for URL validation
-    const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+    const urlRegex = /^(https?:\/\/)?(www\.)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/\S*)?$/;
     return urlRegex.test(url);
   };
 
-  const isInvalid = React.useMemo(() => {
-    if (url === "") return false;
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUrl(event.target.value);
+    if (errorMessage !== null) {
+      setErrorMessage(null); 
+    }
+  };
 
-    return validateURL(url) ? false : true;
-  }, [url]);
 
   return (
     <div className="h-screen px-3 w-full rounded-md flex md:items-center md:justify-center bg-neutral-950 antialiased bg-grid-white/[0.02] relative overflow-hidden">
@@ -47,16 +52,15 @@ const Home: React.FC = () => {
         <form className="flex flex-col md:flex-row mt-10 items-center mx-auto justify-center gap-3" onSubmit={handleSubmit}>
           <Input
             value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            onChange={handleChange}
             type="text"
             placeholder='https://google.com'
             variant="bordered"
-            isInvalid={isInvalid}
-            color={isInvalid ? "danger" : "success"}
-            errorMessage={isInvalid && "Please enter a valid URL"}
+            color={errorMessage ? "danger" : "success"}
+            errorMessage={errorMessage && "Please enter a valid URL"}
             className="max-w-xl text-white"
           />
-          <Button className='py-7 px-7' variant='shadow' color="success" startContent={<SearchIcon/>}>
+          <Button type='submit' className='py-7 px-7' variant='shadow' color="success" startContent={<SearchIcon/>}>
             Scan
           </Button>
         </form>
