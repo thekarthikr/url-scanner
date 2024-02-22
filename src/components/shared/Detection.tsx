@@ -44,7 +44,7 @@ const Detection: React.FC<DetectionProps> = ({ data }) => {
     <div className='max-w-5xl px-3 mx-auto'>
     
       
-<Table removeWrapper className='b z-50  text-gray-200' aria-label="Example static collection table"
+<Table removeWrapper className='b   text-gray-200' aria-label="Example static collection table"
 
 
 bottomContent={

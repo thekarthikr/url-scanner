@@ -85,9 +85,9 @@ const Results: React.FC = () => {
   const { attributes:{times_submitted,url,tld,title,first_submission_date,reputation,total_votes} } = urlInfo;
 
   return (
-    <div className=" text-gray-400 relative">
+    <div className=" text-gray-400 relative pb-16">
      
- <div className="absolute top-0 z-[-2] h-full w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+ <div className="absolute top-0 z-[-2] h-full w-full  bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
  
  <div className="px-3  max-w-7xl   mx-auto relative  pt-20 ">
       <h1 className="text-4xl pb-3 md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">
@@ -106,7 +106,7 @@ const Results: React.FC = () => {
     
       {urlInfo && <Stats data={urlInfo}  /> }
       <div className="flex w-full flex-col">
-      <Tabs className='px-2 max-w-5xl mx-auto' radius="full" variant="bordered" aria-label="Options">
+      <Tabs className='px-2  max-w-5xl mx-auto' radius="full" variant="bordered" aria-label="Options">
         <Tab key="detection" title="
         Detection">
         {urlInfo && <Detection data={urlInfo}  /> }
